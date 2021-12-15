@@ -1,10 +1,10 @@
-package com.joansala.game.draughts;
+package com.joansala.test.game.draughts;
 
 import java.io.FileInputStream;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.*;
 import com.joansala.engine.Board;
-import com.joansala.engine.BoardContract;
+import com.joansala.test.engine.BoardContract;
 import com.joansala.game.draughts.DraughtsBoard;
 import com.joansala.util.suites.Suite;
 import com.joansala.util.suites.SuiteReader;
