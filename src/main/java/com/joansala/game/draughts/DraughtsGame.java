@@ -26,7 +26,7 @@ import static com.joansala.game.draughts.Draughts.*;
 
 
 /**
- * Reperesents a Draughts game between two players.
+ * Represents a Draughts game between two players.
  */
 public class DraughtsGame extends BaseGame {
 
@@ -39,7 +39,7 @@ public class DraughtsGame extends BaseGame {
     /** Capacity increases at least this value each time */
     private static final int CAPACITY_INCREMENT = 128;
 
-    /** Flags the draw clock as resetable with each capture */
+    /** Flags the draw clock as resettable with each capture */
     private static final int RESETABLE = 0x40;
 
     /** Mobility flag (contains capture moves) */
@@ -667,13 +667,13 @@ public class DraughtsGame extends BaseGame {
 
 
     /**
-     * Computes the next draw cowntdown clock.
+     * Computes the next draw countdown clock.
      * @see #isStagnant
      *
      * @return      Clock value
      */
     private int nextClock() {
-        if (count(state[rival.king]) == 1) {
+        if (state[rival.man] == 0 && state[rival.king] == 1) {
             final int k = count(state[player.king]);
             final int c = k + count(state[player.man]);
 
