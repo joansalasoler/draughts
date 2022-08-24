@@ -22,8 +22,9 @@ import picocli.CommandLine.Command;
 
 import com.joansala.cli.*;
 import com.joansala.engine.*;
+import com.joansala.cache.GameCache;
 import com.joansala.engine.base.BaseModule;
-import com.joansala.engine.mcts.Montecarlo;
+import com.joansala.engine.negamax.Negamax;
 
 
 /**
@@ -48,12 +49,13 @@ public class DraughtsModule extends BaseModule {
     @Override protected void configure() {
         bind(Game.class).to(DraughtsGame.class);
         bind(Board.class).to(DraughtsBoard.class);
-        bind(Engine.class).to(Montecarlo.class);
+        bind(Engine.class).to(Negamax.class);
+        bind(Cache.class).to(GameCache.class);
     }
 
 
     /**
-     * Exectues the command line interface.
+     * Executes the command line interface.
      *
      * @param args      Command line parameters
      */

@@ -307,7 +307,28 @@ public class DraughtsGame extends BaseGame {
      */
     @Override
     public int score() {
-        return 0;
+        int score = 0;
+
+        score += KING_WEIGHT * count(state[SOUTH_KING]);
+        score -= KING_WEIGHT * count(state[NORTH_KING]);
+
+        long south = state[SOUTH_MAN];
+
+        while (empty(south) == false) {
+            final int checker = first(south);
+            score += CHECKER_WEIGHTS[checker];
+            south ^= bit(checker);
+        }
+
+        long north = Long.reverse(state[NORTH_MAN]) >>> 9;
+
+        while (empty(north) == false) {
+            final int checker = first(north);
+            score -= CHECKER_WEIGHTS[checker];
+            north ^= bit(checker);
+        }
+
+        return score;
     }
 
 

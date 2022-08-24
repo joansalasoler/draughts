@@ -60,7 +60,7 @@ final class Draughts {
     /** Number of columns on the board */
     static final int BOARD_FILES = 5;
 
-    /** Number of distinc pieces */
+    /** Number of distinct pieces */
     static final int PIECE_COUNT = 4;
 
     // -------------------------------------------------------------------
@@ -131,6 +131,26 @@ final class Draughts {
     static final long[] HASH_SIGN = {
         0x506AACF489889342L, // South sign
         0xD2B7ADEEDED1F73FL  // North sign
+    };
+
+    // -------------------------------------------------------------------
+    // Heuristic evaluation weights
+    // -------------------------------------------------------------------
+
+    /** Value of each king piece */
+    static final int KING_WEIGHT = 48;
+
+    /** Values of a man placed on a checker */
+    static final int[] CHECKER_WEIGHTS = {
+        22,     22,     22,     22,     22,  0,
+            19,     19,     19,     19,     19,
+        19,     19,     19,     19,     19,  0,
+            19,     19,     19,     19,     19,
+        17,     17,     17,     17,     17,  0,
+            19,     19,     19,     19,     19,
+        21,     21,     21,     21,     21,  0,
+            32,     32,     32,     32,     32,
+        40,     40,     40,     40,     40
     };
 
     // -------------------------------------------------------------------

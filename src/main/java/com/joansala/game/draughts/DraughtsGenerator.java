@@ -239,7 +239,7 @@ public class DraughtsGenerator {
      * A capture is stored if the moves array contains a move that has
      * the same origin, target checkers and captures the same rivals.
      * To avoid iterating the moves array each time this method uses
-     * a simplist Bloom filter of captured rivals.
+     * a simplistic Bloom filter of captured rivals.
      *
      * @param to        Destination checker
      * @param rivals    Rivals after the capture
@@ -503,7 +503,7 @@ public class DraughtsGenerator {
 
 
     /**
-     * Inreases the number of slots of this generator.
+     * Increases the number of slots of this generator.
      *
      * @param size          New slot size
      */
