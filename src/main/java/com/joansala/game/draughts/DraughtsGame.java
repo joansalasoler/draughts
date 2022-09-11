@@ -267,6 +267,16 @@ public class DraughtsGame extends BaseGame {
 
 
     /**
+     * Current game state reference.
+     *
+     * @return      A game state
+     */
+    protected long[] state() {
+        return state;
+    }
+
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -298,7 +308,11 @@ public class DraughtsGame extends BaseGame {
      */
     @Override
     public int outcome() {
-        return cannotMove() ? rival.turn * MAX_SCORE : DRAW_SCORE;
+        return (
+            empty(rivals) ? player.turn * MAX_SCORE :
+            cannotMove() ? rival.turn * MAX_SCORE :
+            DRAW_SCORE
+        );
     }
 
 
@@ -550,7 +564,9 @@ public class DraughtsGame extends BaseGame {
      * set it means that it is a bitboard of captures.
      */
     private void computeMobility() {
-        if (CAPTURES == (mobility = computeJumps())) {
+        if (empty(rivals) == true) {
+            mobility = 0L;
+        } else if (CAPTURES == (mobility = computeJumps())) {
             mobility = computeSlides();
         }
     }
