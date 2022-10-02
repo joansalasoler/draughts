@@ -19,10 +19,14 @@ package com.joansala.game.draughts;
 
 
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
 
 import com.joansala.cli.*;
 import com.joansala.engine.*;
 import com.joansala.cache.GameCache;
+import com.joansala.engine.base.BaseLeaves;
 import com.joansala.engine.base.BaseModule;
 import com.joansala.engine.negamax.Negamax;
 
@@ -40,7 +44,14 @@ public class DraughtsModule extends BaseModule {
       version = "1.0.0",
       description = "International draughts is a strategy board game"
     )
-    private static class DraughtsCommand extends MainCommand {}
+    private static class DraughtsCommand extends MainCommand {
+
+        @Option(
+          names = "--leaves",
+          description = "Endgames book path"
+        )
+        private static String leaves = DraughtsLeaves.LEAVES_PATH;
+    }
 
 
     /**
@@ -51,6 +62,23 @@ public class DraughtsModule extends BaseModule {
         bind(Board.class).to(DraughtsBoard.class);
         bind(Engine.class).to(Negamax.class);
         bind(Cache.class).to(GameCache.class);
+    }
+
+
+    /**
+     * Endgames book provider.
+     */
+    @Provides @Singleton @SuppressWarnings("rawtypes")
+    public static Leaves provideLeaves() {
+        String path = DraughtsCommand.leaves;
+
+        try {
+            return new DraughtsLeaves(path);
+        } catch (Exception e) {
+            logger.warning("Cannot open endgames book: " + path);
+        }
+
+        return new BaseLeaves();
     }
 
 
