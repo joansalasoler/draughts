@@ -105,6 +105,9 @@ public class DraughtsGame extends BaseGame {
     /** Index of the last capture or crown move */
     private int advance;
 
+    /** If this is a capturing node */
+    private boolean capturing;
+
 
     /**
      * Instantiate a new game on the start state.
@@ -138,6 +141,14 @@ public class DraughtsGame extends BaseGame {
     @Override
     public int turn() {
         return player.turn;
+    }
+
+
+    /**
+     * All moves are capturing moves.
+     */
+    public boolean isCapturing() {
+        return capturing;
     }
 
 
@@ -566,8 +577,12 @@ public class DraughtsGame extends BaseGame {
     private void computeMobility() {
         if (empty(rivals) == true) {
             mobility = 0L;
+            capturing = false;
         } else if (CAPTURES == (mobility = computeJumps())) {
             mobility = computeSlides();
+            capturing = false;
+        } else {
+            capturing = true;
         }
     }
 
