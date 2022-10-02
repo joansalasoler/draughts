@@ -32,7 +32,7 @@ import static com.joansala.game.draughts.Draughts.*;
 public class DraughtsHash implements HashFunction {
 
     /** Maximum number of pieces on the board */
-    public static final int MAX_PIECES = 5;
+    public static final int MAX_PIECES = 8;
 
 
     /**
@@ -277,15 +277,20 @@ public class DraughtsHash implements HashFunction {
         new BinomialHash(BOARD_SIZE, 3),
         new BinomialHash(BOARD_SIZE, 4),
         new BinomialHash(BOARD_SIZE, 5),
-        new BinomialHash(BOARD_SIZE, 6)
+        new BinomialHash(BOARD_SIZE, 6),
+        new BinomialHash(BOARD_SIZE, 7),
+        new BinomialHash(BOARD_SIZE, 8),
+        new BinomialHash(BOARD_SIZE, 9),
     };
 
 
     /**
-     * Number of positions with N or less pieces.
+     * Number of positions with N or less pieces. Computed as the
+     * number of combinations (2 ** N) * C(50, N) + OFFSETS[N - 1]
      */
     private static final long[] OFFSETS = {
-              0L,         200L,      19800L,
-        1274200L,    60231000L, 2229841240L
+                  0L,           200L,          19800L,
+            1274200L,      60231000L,     2229841240L,
+        67318148440L, 1703824158040L, 36888703364440L,
     };
 }
