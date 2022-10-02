@@ -108,6 +108,36 @@ public class DraughtsBoard extends BaseBoard<long[]> {
 
 
     /**
+     * Returns a copy of this board's position rotated.
+     * @see #rotateState(long[]))
+     *
+     * @return          Rotated position array
+     */
+    public long[] rotatedPosition() {
+        return rotateState(position);
+    }
+
+
+    /**
+     * Returns a rotated copy of a state. That is, with inverted piece
+     * colors and the board turned 180 degrees.
+     *
+     * @param state     State to rotate
+     * @return          New rotated state array
+     */
+    public static long[] rotateState(long[] state) {
+        final long[] rotated = new long[4];
+
+        rotated[0] = Long.reverse(state[1]) >>> 9;
+        rotated[1] = Long.reverse(state[0]) >>> 9;
+        rotated[2] = Long.reverse(state[3]) >>> 9;
+        rotated[3] = Long.reverse(state[2]) >>> 9;
+
+        return rotated;
+    }
+
+
+    /**
      * {@inheritDoc}
      */
     @Override
