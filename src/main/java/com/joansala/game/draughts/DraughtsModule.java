@@ -29,6 +29,8 @@ import com.joansala.cache.GameCache;
 import com.joansala.engine.base.BaseLeaves;
 import com.joansala.engine.base.BaseModule;
 import com.joansala.engine.negamax.Negamax;
+import com.joansala.book.base.BaseRoots;
+import static com.joansala.game.draughts.Draughts.*;
 
 
 /**
@@ -47,10 +49,28 @@ public class DraughtsModule extends BaseModule {
     private static class DraughtsCommand extends MainCommand {
 
         @Option(
+          names = "--roots",
+          description = "Openings book path"
+        )
+        private static String roots = DraughtsRoots.ROOTS_PATH;
+
+        @Option(
           names = "--leaves",
           description = "Endgames book path"
         )
         private static String leaves = DraughtsLeaves.LEAVES_PATH;
+
+        @Option(
+          names = "--disturbance",
+          description = "Openings book root disturbance"
+        )
+        private static double disturbance = ROOT_DISTURBANCE;
+
+        @Option(
+          names = "--threshold",
+          description = "Openings book root threshold"
+        )
+        private static double threshold = ROOT_THRESHOLD;
     }
 
 
@@ -62,6 +82,26 @@ public class DraughtsModule extends BaseModule {
         bind(Board.class).to(DraughtsBoard.class);
         bind(Engine.class).to(Negamax.class);
         bind(Cache.class).to(GameCache.class);
+    }
+
+
+    /**
+     * Openings book provider.
+     */
+    @Provides @Singleton @SuppressWarnings("rawtypes")
+    public static Roots provideRoots() {
+        String path = DraughtsCommand.roots;
+
+        try {
+            DraughtsRoots roots = new DraughtsRoots(path);
+            roots.setDisturbance(DraughtsCommand.disturbance);
+            roots.setThreshold(DraughtsCommand.threshold);
+            return roots;
+        } catch (Exception e) {
+            logger.warning("Cannot open openings book: " + path);
+        }
+
+        return new BaseRoots();
     }
 
 

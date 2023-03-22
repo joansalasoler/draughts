@@ -154,6 +154,16 @@ final class Draughts {
     };
 
     // -------------------------------------------------------------------
+    // Openings book
+    // -------------------------------------------------------------------
+
+    /** Minimum score for an opening move to be chosen */
+    public static final double ROOT_THRESHOLD = -36.0D;
+
+    /** Threshold on the highest opening move reward */
+    public static final double ROOT_DISTURBANCE = 36.0D;
+
+    // -------------------------------------------------------------------
     // Board definitions
     // -------------------------------------------------------------------
 
