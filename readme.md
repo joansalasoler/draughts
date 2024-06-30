@@ -1,7 +1,13 @@
 What is it?
 ===========
 
-An International Draughts engine.
+An International Draughts engine implemented with the Samurai Framework.
+
+Usage and Documentation
+=======================
+
+See the repository https://github.com/joansalasoler/engines for usage
+instructions.
 
 The Latest Version
 ==================
