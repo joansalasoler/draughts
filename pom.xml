@@ -97,6 +97,7 @@
         <excludes>
           <exclude>**/*.bin</exclude>
           <exclude>**/*.suite</exclude>
+          <exclude>**/*.tar.xz</exclude>
         </excludes>
       </resource>
     </resources>
