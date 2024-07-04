@@ -45,76 +45,79 @@ import com.joansala.engine.Game;
  * | 0 |   | 1 |   | 2 |   | 3 |   | 4 |   |
  * +---+---+---+---+---+---+---+---+---+---+
  */
-final class Draughts {
+public final class Draughts {
 
     // -------------------------------------------------------------------
     // Game logic constants
     // -------------------------------------------------------------------
 
     /** Number of checkers on the board */
-    static final int BOARD_SIZE = 50;
+    public static final int BOARD_SIZE = 50;
 
     /** Number of rows on the board */
-    static final int BOARD_RANKS = 10;
+    public static final int BOARD_RANKS = 10;
 
     /** Number of columns on the board */
-    static final int BOARD_FILES = 5;
+    public static final int BOARD_FILES = 5;
 
     /** Number of distinct pieces */
-    static final int PIECE_COUNT = 4;
+    public static final int PIECE_COUNT = 4;
+
+    /** Length of a position array */
+    public static final int POSITION_SIZE = 4;
 
     // -------------------------------------------------------------------
     // Board representation
     // -------------------------------------------------------------------
 
     /** South player name */
-    static final String SOUTH_NAME = "White";
+    public static final String SOUTH_NAME = "White";
 
     /** North player name */
-    static final String NORTH_NAME = "Black";
+    public static final String NORTH_NAME = "Black";
 
     /** South player symbol */
-    static final char SOUTH_SYMBOL = 'w';
+    public static final char SOUTH_SYMBOL = 'w';
 
     /** North player symbol */
-    static final char NORTH_SYMBOL = 'b';
+    public static final char NORTH_SYMBOL = 'b';
 
     /** Empty checker symbol */
-    static final char EMPTY_SYMBOL = '·';
+    public static final char EMPTY_SYMBOL = '·';
 
     // -------------------------------------------------------------------
     // Piece indices
     // -------------------------------------------------------------------
 
-    static final int SOUTH_MAN  =  0;
-    static final int NORTH_MAN  =  1;
-    static final int SOUTH_KING =  2;
-    static final int NORTH_KING =  3;
+    public static final int SOUTH_MAN  =  0;
+    public static final int NORTH_MAN  =  1;
+    public static final int SOUTH_KING =  2;
+    public static final int NORTH_KING =  3;
 
     // -------------------------------------------------------------------
     // Direction and sense
     // -------------------------------------------------------------------
 
-    static final int UP   =  0;
-    static final int DOWN =  64;
+    public static final int UP   =  0;
+    public static final int DOWN =  64;
 
-    static final int NW   =  5;
-    static final int NE   =  6;
-    static final int SW   = 70;
-    static final int SE   = 69;
+    public static final int NW   =  5;
+    public static final int NE   =  6;
+    public static final int SW   = 70;
+    public static final int SE   = 69;
 
     // -------------------------------------------------------------------
     // Bitboards
     // -------------------------------------------------------------------
 
     /** Number of bits on each bitboard */
-    static final int BIT_SIZE = 55;
+    public static final int BIT_SIZE = 55;
 
     /** Bitboard with all relevant bits set */
-    static final long BOARD_BITS = 0X7DFFBFF7FEFFDFL;
+    public static final long BOARD_BITS = 0X7DFFBFF7FEFFDFL;
 
     /** Masks for the players bases */
-    static final long[] BASES_BITS = {
+    public static final long[] BASES_BITS = {
         0X7C000000000000L, // South bases
         0X0000000000001FL  // North bases
     };
@@ -124,11 +127,11 @@ final class Draughts {
     // -------------------------------------------------------------------
 
     /** Zobrist hashing random seed */
-    static final long RANDOM_SEED =
+    public static final long RANDOM_SEED =
         0x6622E46E1DB096FAL;
 
     /** Zobrist keys for the player to move */
-    static final long[] HASH_SIGN = {
+    public static final long[] HASH_SIGN = {
         0x506AACF489889342L, // South sign
         0xD2B7ADEEDED1F73FL  // North sign
     };
@@ -138,10 +141,10 @@ final class Draughts {
     // -------------------------------------------------------------------
 
     /** Value of each king piece */
-    static final int KING_WEIGHT = 48;
+    public static final int KING_WEIGHT = 48;
 
     /** Values of a man placed on a checker */
-    static final int[] CHECKER_WEIGHTS = {
+    public static final int[] CHECKER_WEIGHTS = {
         22,     22,     22,     22,     22,  0,
             19,     19,     19,     19,     19,
         19,     19,     19,     19,     19,  0,
@@ -168,12 +171,12 @@ final class Draughts {
     // -------------------------------------------------------------------
 
     /** Indexed game piece symbols */
-    static final char[] PIECES = {
+    public static final char[] PIECES = {
         'w', 'b', 'W', 'B'
     };
 
     /** Indexed board cell names */
-    static final String[] COORDINATES = {
+    public static final String[] COORDINATES = {
         "46", "47", "48", "49", "50", "-",
         "41", "42", "43", "44", "45",
         "36", "37", "38", "39", "40", "-",
@@ -187,7 +190,7 @@ final class Draughts {
     };
 
     /** Bit indices of the checkers */
-    static final int[] BITS = {
+    public static final int[] BITS = {
          0,  1,  2,  3,  4,
          6,  7,  8,  9, 10,
         11, 12, 13, 14, 15,
@@ -201,7 +204,7 @@ final class Draughts {
     };
 
     /** Start position bitboards */
-    static final long[] START_POSITION = {
+    public static final long[] START_POSITION = {
         0X000000003EFFDFL, // South Men
         0X7DFFBE00000000L, // North Men
         0x00000000000000L, // South Kings
