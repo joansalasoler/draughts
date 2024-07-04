@@ -75,6 +75,12 @@ public class DraughtsModule extends BaseModule {
           description = "Openings book root threshold"
         )
         private static double threshold = ROOT_THRESHOLD;
+
+        @Option(
+          names = "--cache-size",
+          description = "Default hash table size (bytes)"
+        )
+        private static long cacheSize = GameCache.DEFAULT_SIZE;
     }
 
 
@@ -85,7 +91,15 @@ public class DraughtsModule extends BaseModule {
         bind(Game.class).to(DraughtsGame.class);
         bind(Board.class).to(DraughtsBoard.class);
         bind(Engine.class).to(Negamax.class);
-        bind(Cache.class).to(GameCache.class);
+    }
+
+
+    /**
+     * Transpositions table provider.
+     */
+    @Provides @Singleton @SuppressWarnings("rawtypes")
+    public static Cache provideCache() {
+        return new GameCache(DraughtsCommand.cacheSize);
     }
 
 
