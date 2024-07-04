@@ -163,6 +163,23 @@ public class DraughtsLeaves extends BaseBook implements Leaves<Game> {
 
 
     /**
+     * Computes a unique hash code for a game state.
+     *
+     * @param game          Game state
+     */
+    public long computeHash(Game game) {
+        DraughtsGame g = (DraughtsGame) game;
+        long[] state = g.state();
+
+        if (game.turn() == NORTH) {
+            state = rotateState(state);
+        }
+
+        return hasher.hash(state);
+    }
+
+
+    /**
      * Reads the endgames from the book file.
      *
      * @return          Book entries store

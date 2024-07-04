@@ -30,6 +30,7 @@ import com.joansala.engine.base.BaseLeaves;
 import com.joansala.engine.base.BaseModule;
 import com.joansala.engine.negamax.Negamax;
 import com.joansala.book.base.BaseRoots;
+import com.joansala.cli.draughts.egtb.EGTBCommand;
 import static com.joansala.game.draughts.Draughts.*;
 
 
@@ -44,7 +45,10 @@ public class DraughtsModule extends BaseModule {
     @Command(
       name = "draughts",
       version = "1.0.0",
-      description = "International draughts is a strategy board game"
+      description = "International draughts is a strategy board game",
+      subcommands = {
+        EGTBCommand.class
+      }
     )
     private static class DraughtsCommand extends MainCommand {
 
