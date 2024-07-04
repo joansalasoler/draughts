@@ -29,7 +29,7 @@ import static com.joansala.game.draughts.DraughtsGame.*;
 public class DraughtsRoots extends UCTRoots {
 
     /** Default path of the book database */
-    public static final String ROOTS_PATH = "/draughts-roots.bin";
+    public static final String ROOTS_PATH = "draughts-roots.bin";
 
 
     /**
@@ -46,17 +46,9 @@ public class DraughtsRoots extends UCTRoots {
      * @param path      Database path
      */
     public DraughtsRoots(String path) throws IOException {
-        super(getResourcePath(path));
+        super(path);
         setDisturbance(ROOT_DISTURBANCE);
         setThreshold(ROOT_THRESHOLD);
         setInfinity(MAX_SCORE);
-    }
-
-
-    /**
-     * Obtain a path to the given resource file.
-     */
-    private static String getResourcePath(String path) {
-        return DraughtsRoots.class.getResource(path).getFile();
     }
 }

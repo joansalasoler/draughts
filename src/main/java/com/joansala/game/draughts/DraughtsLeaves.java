@@ -26,9 +26,11 @@ import com.joansala.engine.Leaves;
 import com.joansala.engine.base.BaseBook;
 import com.joansala.util.bits.BitsetMap;
 
+import static com.joansala.engine.Game.DRAW_SCORE;
+import static com.joansala.engine.Game.NORTH;
+import static com.joansala.engine.base.BaseGame.MAX_SCORE;
 import static com.joansala.game.draughts.Draughts.*;
 import static com.joansala.game.draughts.DraughtsBoard.*;
-import static com.joansala.game.draughts.DraughtsGame.*;
 import static com.joansala.util.bits.Bits.*;
 
 
@@ -38,7 +40,7 @@ import static com.joansala.util.bits.Bits.*;
 public class DraughtsLeaves extends BaseBook implements Leaves<Game> {
 
     /** Default path to the endgames book binary file */
-    public static final String LEAVES_PATH = "/draughts-leaves.bin";
+    public static final String LEAVES_PATH = "draughts-leaves.bin";
 
     /** Maximum number of pieces a state can contain */
     public static final int MAX_PIECES = 5;
@@ -60,7 +62,7 @@ public class DraughtsLeaves extends BaseBook implements Leaves<Game> {
      * Create a new endgames book instance.
      */
     public DraughtsLeaves() throws IOException {
-        this(getResourcePath(LEAVES_PATH));
+        this(LEAVES_PATH);
     }
 
 
@@ -70,7 +72,7 @@ public class DraughtsLeaves extends BaseBook implements Leaves<Game> {
      * @param path      Book file path
      */
     public DraughtsLeaves(String path) throws IOException {
-        super(getResourcePath(path));
+        super(path);
         store = readFromFile();
     }
 
@@ -175,13 +177,5 @@ public class DraughtsLeaves extends BaseBook implements Leaves<Game> {
         store.readFromFile(stream);
 
         return store;
-    }
-
-
-    /**
-     * Obtain a path to the given resource file.
-     */
-    private static String getResourcePath(String path) {
-        return BaseBook.class.getResource(path).getFile();
     }
 }
