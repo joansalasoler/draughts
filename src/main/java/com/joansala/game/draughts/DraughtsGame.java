@@ -707,7 +707,7 @@ public class DraughtsGame extends BaseGame {
     private boolean isRepetition() {
         boolean found = false;
 
-        for (int n = index; n > advance; n -= 2) {
+        for (int n = index - 1; n > advance; n -= 2) {
             if (hashes[n] == this.hash) {
                 if (found) return true;
                 found = true;
