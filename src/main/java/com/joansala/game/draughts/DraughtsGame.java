@@ -19,7 +19,10 @@ package com.joansala.game.draughts;
 
 import java.util.Arrays;
 import com.joansala.engine.Board;
+import com.joansala.engine.Scorer;
 import com.joansala.engine.base.BaseGame;
+import com.joansala.game.draughts.Draughts.Player;
+import com.joansala.game.draughts.scorers.PositionalScorer;
 import com.joansala.util.hash.ZobristHash;
 import static com.joansala.util.bits.Bits.*;
 import static com.joansala.game.draughts.Draughts.*;
@@ -47,6 +50,9 @@ public class DraughtsGame extends BaseGame {
 
     /** Mobility flag (moves were generated) */
     private static final long GENERATED = (0x01L << 62);
+
+    /** Heuristic evaluation function */
+    private static final Scorer<DraughtsGame> scorer = scoreFunction();
 
     /** Hash code generator */
     private static final ZobristHash hasher = hashFunction();
@@ -153,6 +159,14 @@ public class DraughtsGame extends BaseGame {
 
 
     /**
+     * Bitboard of pieces that can move.
+     */
+    protected long mobility() {
+        return mobility;
+    }
+
+
+    /**
      * Bitboard of free checkers.
      */
     protected long free() {
@@ -165,14 +179,6 @@ public class DraughtsGame extends BaseGame {
      */
     protected long rivals() {
         return rivals;
-    }
-
-
-    /**
-     * Bitboard of pieces that can move.
-     */
-    protected long mobility() {
-        return mobility;
     }
 
 
@@ -278,6 +284,16 @@ public class DraughtsGame extends BaseGame {
 
 
     /**
+     * Obtain the current bitboard value on the given index.
+     *
+     * @return      Bitboard value
+     */
+    public final long state(int index) {
+        return state[index];
+    }
+
+
+    /**
      * Current game state reference.
      *
      * @return      A game state
@@ -332,28 +348,7 @@ public class DraughtsGame extends BaseGame {
      */
     @Override
     public int score() {
-        int score = 0;
-
-        score += KING_WEIGHT * count(state[SOUTH_KING]);
-        score -= KING_WEIGHT * count(state[NORTH_KING]);
-
-        long south = state[SOUTH_MAN];
-
-        while (empty(south) == false) {
-            final int checker = first(south);
-            score += CHECKER_WEIGHTS[checker];
-            south ^= bit(checker);
-        }
-
-        long north = Long.reverse(state[NORTH_MAN]) >>> 9;
-
-        while (empty(north) == false) {
-            final int checker = first(north);
-            score -= CHECKER_WEIGHTS[checker];
-            north ^= bit(checker);
-        }
-
-        return score;
+        return scorer.evaluate(this);
     }
 
 
@@ -809,6 +804,14 @@ public class DraughtsGame extends BaseGame {
 
             System.gc();
         }
+    }
+
+
+    /**
+     * Initialize the heuristic evaluation function.
+     */
+    private static Scorer<DraughtsGame> scoreFunction() {
+        return new PositionalScorer();
     }
 
 

@@ -113,6 +113,9 @@ public final class Draughts {
     /** Number of bits on each bitboard */
     public static final int BIT_SIZE = 55;
 
+    /** This bit is set on north pieces but not south */
+    public static final int COLOR_BIT = 0b01;
+
     /** Bitboard with all relevant bits set */
     public static final long BOARD_BITS = 0X7DFFBFF7FEFFDFL;
 
@@ -134,26 +137,6 @@ public final class Draughts {
     public static final long[] HASH_SIGN = {
         0x506AACF489889342L, // South sign
         0xD2B7ADEEDED1F73FL  // North sign
-    };
-
-    // -------------------------------------------------------------------
-    // Heuristic evaluation weights
-    // -------------------------------------------------------------------
-
-    /** Value of each king piece */
-    public static final int KING_WEIGHT = 48;
-
-    /** Values of a man placed on a checker */
-    public static final int[] CHECKER_WEIGHTS = {
-        22,     22,     22,     22,     22,  0,
-            19,     19,     19,     19,     19,
-        19,     19,     19,     19,     19,  0,
-            19,     19,     19,     19,     19,
-        17,     17,     17,     17,     17,  0,
-            19,     19,     19,     19,     19,
-        21,     21,     21,     21,     21,  0,
-            32,     32,     32,     32,     32,
-        40,     40,     40,     40,     40
     };
 
     // -------------------------------------------------------------------
