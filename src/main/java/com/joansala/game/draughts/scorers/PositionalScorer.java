@@ -70,7 +70,7 @@ import static com.joansala.util.bits.Bits.*;
 public final class PositionalScorer implements Scorer<DraughtsGame> {
 
     /** Heuristic value for crowning a king */
-    public static final int CROWN_WEIGHT = 78;
+    public static final int CROWN_WEIGHT = 89;
 
     /** Index of men on the piece-square tables */
     public static final int MAN = 0;
@@ -126,26 +126,26 @@ public final class PositionalScorer implements Scorer<DraughtsGame> {
 
     /** Piece-square weights */
     private static final int[][] WEIGHTS = {{
-        28,    29,    29,    29,    30,     0,
-            26,    27,    27,    27,    27,
-        26,    27,    27,    27,    26,     0,
-            24,    25,    25,    26,    26,
-        26,    25,    25,    24,    24,     0,
-            22,    23,    24,    24,    27,
-        27,    27,    26,    24,    24,     0,
-            35,    38,    40,    36,    30,
-        48,    52,    56,    54,    51,     0,
+        23,    24,    24,    24,    25,     0,
+            21,    21,    22,    22,    22,
+        21,    22,    21,    21,    20,     0,
+            18,    19,    20,    20,    21,
+        21,    20,    19,    18,    18,     0,
+            16,    17,    18,    18,    21,
+        22,    21,    20,    18,    18,     0,
+            31,    35,    37,    32,    25,
+        46,    51,    55,    53,    49,     0,
              0,     0,     0,     0,     0
     }, {
-        41,    45,    48,    47,    40,     0,
-            39,    43,    46,    43,    40,
-        44,    40,    44,    41,    40,     0,
-            40,    39,    36,    42,    43,
-        44,    39,    28,    35,    36,     0,
-            32,    29,    28,    36,    46,
-        44,    30,    29,    23,    27,     0,
-            14,    30,    29,    31,    46,
-        47,    27,    28,    28,    22,     0,
-            43,    36,    38,    42,    43
+        38,    43,    47,    45,    37,     0,
+            36,    40,    44,    41,    37,
+        42,    37,    41,    39,    37,     0,
+            37,    35,    32,    39,    40,
+        42,    36,    23,    32,    33,     0,
+            28,    25,    23,    32,    44,
+        42,    26,    24,    18,    22,     0,
+             7,    25,    24,    26,    45,
+        45,    22,    23,    23,    16,     0,
+            40,    32,    35,    40,    41
     }};
 }
