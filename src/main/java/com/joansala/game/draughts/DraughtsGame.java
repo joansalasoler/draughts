@@ -317,7 +317,7 @@ public class DraughtsGame extends BaseGame {
      */
     @Override
     public int toCentiPawns(int score) {
-        return (int) (2.0 * score);
+        return (int) (score * 100.0 / PIECE_SCORE);
     }
 
 
