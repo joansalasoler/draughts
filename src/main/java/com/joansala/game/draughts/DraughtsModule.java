@@ -21,14 +21,14 @@ package com.joansala.game.draughts;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import com.google.inject.Provides;
-import com.google.inject.Singleton;
-
+import com.google.inject.name.Named;
 import com.joansala.cli.*;
 import com.joansala.engine.*;
 import com.joansala.cache.GameCache;
 import com.joansala.engine.base.BaseLeaves;
 import com.joansala.engine.base.BaseModule;
 import com.joansala.engine.negamax.Negamax;
+import com.joansala.engine.uct.UCT;
 import com.joansala.book.base.BaseRoots;
 import com.joansala.cli.draughts.egtb.EGTBCommand;
 import static com.joansala.game.draughts.Draughts.*;
@@ -91,6 +91,15 @@ public class DraughtsModule extends BaseModule {
         bind(Game.class).to(DraughtsGame.class);
         bind(Board.class).to(DraughtsBoard.class);
         bind(Engine.class).to(Negamax.class);
+    }
+
+
+    /**
+     * Exploration bias factor for {@link UCT}.
+     */
+    @Provides @Named("BIAS")
+    public static double provideExplorationBias() {
+        return Math.sqrt(2) / 8D;
     }
 
 
