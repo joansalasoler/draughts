@@ -150,11 +150,11 @@ public final class Draughts {
     // Openings book
     // -------------------------------------------------------------------
 
-    /** Minimum score for an opening move to be chosen */
-    public static final double ROOT_THRESHOLD = -36.0D;
+    /** Never play book moves with a score lower than this */
+    public static final int ROOT_THRESHOLD = -31;
 
-    /** Threshold on the highest opening move reward */
-    public static final double ROOT_DISTURBANCE = 36.0D;
+    /** Play book moves within this range of the best move score */
+    public static final int ROOT_DISTURBANCE = 22;
 
     // -------------------------------------------------------------------
     // Board definitions

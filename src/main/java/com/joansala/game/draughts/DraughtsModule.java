@@ -20,6 +20,7 @@ package com.joansala.game.draughts;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
 import com.joansala.cli.*;
@@ -28,6 +29,7 @@ import com.joansala.cache.GameCache;
 import com.joansala.engine.base.BaseLeaves;
 import com.joansala.engine.base.BaseModule;
 import com.joansala.engine.negamax.Negamax;
+import com.joansala.engine.puct.PUCT;
 import com.joansala.engine.uct.UCT;
 import com.joansala.book.base.BaseRoots;
 import com.joansala.cli.draughts.egtb.EGTBCommand;
@@ -65,16 +67,16 @@ public class DraughtsModule extends BaseModule {
         private static String leaves = DraughtsLeaves.LEAVES_PATH;
 
         @Option(
-          names = "--disturbance",
+          names = "--roots-disturbance",
           description = "Openings book root disturbance"
         )
-        private static double disturbance = ROOT_DISTURBANCE;
+        private static int disturbance = ROOT_DISTURBANCE;
 
         @Option(
-          names = "--threshold",
+          names = "--roots-threshold",
           description = "Openings book root threshold"
         )
-        private static double threshold = ROOT_THRESHOLD;
+        private static int threshold = ROOT_THRESHOLD;
 
         @Option(
           names = "--cache-size",
@@ -97,8 +99,17 @@ public class DraughtsModule extends BaseModule {
     /**
      * Exploration bias factor for {@link UCT}.
      */
-    @Provides @Named("BIAS")
-    public static double provideExplorationBias() {
+    @Provides @Named("UCB1-BIAS")
+    public static double provideUCB1Bias() {
+        return Math.sqrt(2) / 8D;
+    }
+
+
+    /**
+     * Exploration bias factor for {@link PUCT}.
+     */
+    @Provides @Named("PUCB-BIAS")
+    public static double providePUCBBias() {
         return Math.sqrt(2) / 8D;
     }
 
