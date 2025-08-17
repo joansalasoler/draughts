@@ -137,7 +137,7 @@ public class DraughtsGame extends BaseGame {
         hashes = new long[capacity];
         mobilities = new long[capacity];
         states = new long[capacity << 2];
-        setBoard(new DraughtsBoard());
+        setStartingBoard(new DraughtsBoard());
     }
 
 
@@ -202,7 +202,7 @@ public class DraughtsGame extends BaseGame {
      * {@inheritDoc}
      */
     @Override
-    public Board getBoard() {
+    public Board getStartingBoard() {
         return board;
     }
 
@@ -211,15 +211,15 @@ public class DraughtsGame extends BaseGame {
      * {@inheritDoc}
      */
     @Override
-    public void setBoard(Board board) {
-        setBoard((DraughtsBoard) board);
+    public void setStartingBoard(Board board) {
+        setStartingBoard((DraughtsBoard) board);
     }
 
 
     /**
-     * {@see #setBoard(Board)}
+     * {@see #setStartingBoard(Board)}
      */
-    public void setBoard(DraughtsBoard board) {
+    public void setStartingBoard(DraughtsBoard board) {
         this.index = -1;
         this.advance = -1;
         this.board = board;
@@ -278,7 +278,7 @@ public class DraughtsGame extends BaseGame {
      * {@inheritDoc}
      */
     @Override
-    public DraughtsBoard toBoard() {
+    public DraughtsBoard getCurrentBoard() {
         return new DraughtsBoard(state, player.turn, clock & 0x3F);
     }
 

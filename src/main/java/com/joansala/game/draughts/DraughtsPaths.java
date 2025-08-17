@@ -37,7 +37,7 @@ public class DraughtsPaths {
      */
     public int[] toPath(DraughtsBoard board, int move) {
         synchronized (game) {
-            game.setBoard(board);
+            game.setStartingBoard(board);
             return toPath(game, move);
         }
     }
@@ -46,10 +46,10 @@ public class DraughtsPaths {
     /**
      * Move coordinates path to a move identifier.
      */
-    public int toMove(DraughtsBoard board, int[] path) {
+    public int parsePath(DraughtsBoard board, int[] path) {
         synchronized (game) {
-            game.setBoard(board);
-            return toMove(game, path);
+            game.setStartingBoard(board);
+            return parsePath(game, path);
         }
     }
 
@@ -61,7 +61,7 @@ public class DraughtsPaths {
         int[][] paths = new int[moves.length][];
 
         synchronized (game) {
-            game.setBoard(board);
+            game.setStartingBoard(board);
             game.ensureCapacity(moves.length);
 
             for (int i = 0; i < moves.length; i++) {
@@ -77,15 +77,15 @@ public class DraughtsPaths {
     /**
      * Move path sequence to a move identifier sequence.
      */
-    public int[] toMoves(DraughtsBoard board, int[][] paths) {
+    public int[] parsePaths(DraughtsBoard board, int[][] paths) {
         int[] moves = new int[paths.length];
 
         synchronized (game) {
-            game.setBoard(board);
+            game.setStartingBoard(board);
             game.ensureCapacity(moves.length);
 
             for (int i = 0; i < moves.length; i++) {
-                moves[i] = toMove(game, paths[i]);
+                moves[i] = parsePath(game, paths[i]);
                 game.makeMove(moves[i]);
             }
         }
@@ -121,7 +121,7 @@ public class DraughtsPaths {
     /**
      * Move coordinates path to a move identifier.
      */
-    private int toMove(DraughtsGame game, int[] path) {
+    private int parsePath(DraughtsGame game, int[] path) {
         final int from = path[0];
         final int to = path[path.length - 1];
         final int code = (from << 6) | to;

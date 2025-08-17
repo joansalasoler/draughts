@@ -29,7 +29,7 @@ public class EGTBGame extends DraughtsGame {
      * {@inheritDoc}
      */
     @Override
-    public DraughtsBoard toBoard() {
+    public DraughtsBoard getCurrentBoard() {
         long[] position = Arrays.copyOf(state(), POSITION_SIZE);
         return new EGTBBoard(position);
     }

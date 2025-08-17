@@ -141,9 +141,9 @@ public class DraughtsBoard extends BaseBoard<long[]> {
      * {@inheritDoc}
      */
     @Override
-    public int toMove(String notation) {
+    public int parseCoordinates(String notation) {
         int[] path = toPath(notation);
-        return encoder.toMove(this, path);
+        return encoder.parsePath(this, path);
     }
 
 
@@ -177,7 +177,7 @@ public class DraughtsBoard extends BaseBoard<long[]> {
      * {@inheritDoc}
      */
     @Override
-    public int[] toMoves(String notation) {
+    public int[] parseNotation(String notation) {
         if (notation == null || notation.isBlank()) {
             return new int[0];
         }
@@ -189,7 +189,7 @@ public class DraughtsBoard extends BaseBoard<long[]> {
             paths[i] = toPath(notations[i]);
         }
 
-        return encoder.toMoves(this, paths);
+        return encoder.parsePaths(this, paths);
     }
 
 
@@ -228,7 +228,7 @@ public class DraughtsBoard extends BaseBoard<long[]> {
      * {@inheritDoc}
      */
     @Override
-    public DraughtsBoard toBoard(String notation) {
+    public DraughtsBoard fromDiagram(String notation) {
         String[] fields = notation.split(" ");
 
         long[] position = toPosition(fen.toArray(fields[0]));
