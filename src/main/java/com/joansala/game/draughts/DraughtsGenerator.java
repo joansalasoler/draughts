@@ -108,7 +108,7 @@ public class DraughtsGenerator {
     public void generate(int slot, DraughtsGame game) {
         this.moves = store[slot].moves;
         this.remnants = store[slot].remnants;
-        generate(game);
+        generateMoves(game);
     }
 
 
@@ -117,7 +117,7 @@ public class DraughtsGenerator {
      *
      * @param game      Game state
      */
-    private void generate(DraughtsGame game) {
+    private void generateMoves(DraughtsGame game) {
         this.index = 1;
         this.threshold = MAX_CAPTURES;
 
@@ -144,8 +144,24 @@ public class DraughtsGenerator {
     /**
      * Traces a path of captures for the given move.
      *
-     * @param move      Move to trace
+     * In draughts, a single move can represent a sequence of multiple
+     * jumps when capturing several pieces in one turn. The move generator
+     * stores these captures as single encoded moves for efficiency. This
+     * method reconstructs the complete sequence by regenerating moves
+     * and returning each individual step of the capture.
+     *
+     * How it works: The method redirects move generation to use the trace
+     * storage, sets the target move to find, then calls generate(). During
+     * generation, when storeCapture() finds the exact move, it stops
+     * tracing and the trace.path contains the step-by-step sequence.
+     *
+     * For example, if a piece jumps from square 1 to square 15 while
+     * capturing pieces on squares 6 and 10, this method returns the
+     * step-by-step breakdown: [1, 6, 10, 15].
+     *
+     * @param move      Encoded move to trace
      * @param game      Game state
+     * @return          Array of checker positions showing each step
      */
     public int[] trace(int move, DraughtsGame game) {
         this.moves = trace.moves;
@@ -153,7 +169,7 @@ public class DraughtsGenerator {
 
         trace.move = move;
         Arrays.fill(trace.path, Game.NULL_MOVE);
-        generate(game);
+        generateMoves(game);
         trace.move = Game.NULL_MOVE;
 
         return toCheckers(trace.path);
@@ -193,7 +209,7 @@ public class DraughtsGenerator {
 
 
     /**
-     * Stores an capture on the moves array.
+     * Stores a capture on the moves array.
      *
      * Only moves that maximize the number of captured rivals will
      * remain on the moves array. If a capture is already stored on the
