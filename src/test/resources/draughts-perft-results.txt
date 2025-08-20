@@ -1,0 +1,213 @@
+Benchmark setup
+------------------------------------------------------------
+Game class:          com.joansala.game.draughts.DraughtsGame
+Depth limit:                                        10 plies
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       81                  0      90,00
+    3                      658                  0     124,67
+    4                    4.265                  0   1.002,60
+    5                   27.117                  0   1.606,50
+    6                  167.140                  0   2.490,88
+    7                1.049.442                  0   7.432,81
+    8                6.483.961                  0  14.110,72
+    9               41.022.423                  0  13.870,58
+   10              258.895.763                  0  12.826,27
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     12.826.268 nps
+Node visits count:                         307.650.859 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       70                  0   Infinity
+    3                      430                  0   Infinity
+    4                    2.585                  0   Infinity
+    5                   15.429                  0   9.261,50
+    6                   95.568                  0  10.371,91
+    7                  579.816                  0  12.850,13
+    8                3.688.169                  0  14.045,12
+    9               23.082.802                  0  12.942,92
+   10              150.536.090                  0  11.989,83
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     11.989.827 nps
+Node visits count:                         178.000.968 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       80                  0   Infinity
+    3                      590                  0   Infinity
+    4                    3.873                  0   Infinity
+    5                   24.208                  0  14.380,00
+    6                  149.143                  0   7.412,63
+    7                  913.252                  0  12.123,94
+    8                5.649.973                  0  12.168,10
+    9               35.162.485                  0  11.931,55
+   10              221.541.214                  0  12.126,34
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     12.126.344 nps
+Node visits count:                         263.444.827 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       70                  0   Infinity
+    3                      435                  0   Infinity
+    4                    2.725                  0   3.239,00
+    5                   16.593                  0   9.916,00
+    6                  104.701                  0  10.377,75
+    7                  649.042                  0  13.337,50
+    8                4.156.449                  0  13.007,98
+    9               26.569.074                  0  11.727,14
+   10              173.413.440                  0  12.718,01
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     12.718.008 nps
+Node visits count:                         204.912.538 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       70                  0   Infinity
+    3                      423                  0   Infinity
+    4                    2.616                  0   3.118,00
+    5                   15.472                  0   9.295,00
+    6                   96.045                  0  11.463,50
+    7                  574.583                  0  13.254,19
+    8                3.631.411                  0  12.309,48
+    9               22.568.722                  0  13.532,64
+   10              146.283.394                  0  14.018,68
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     14.018.679 nps
+Node visits count:                         173.172.745 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       70                  0   Infinity
+    3                      435                  0     514,00
+    4                    2.754                  0   Infinity
+    5                   16.935                  0   5.050,75
+    6                  106.348                  0   9.734,69
+    7                  657.036                  0  11.194,10
+    8                4.158.847                  0  14.161,70
+    9               26.324.675                  0  13.659,72
+   10              169.824.878                  0  11.976,18
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     11.976.177 nps
+Node visits count:                         201.091.987 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       70                  0   Infinity
+    3                      435                  0   Infinity
+    4                    2.740                  0   3.254,00
+    5                   16.942                  0  10.098,00
+    6                  107.888                  0  11.644,00
+    7                  674.635                  0  12.349,52
+    8                4.340.749                  0  13.571,16
+    9               27.842.980                  0  12.285,46
+   10              182.091.961                  0  12.387,17
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     12.387.169 nps
+Node visits count:                         215.078.409 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       79                  0   Infinity
+    3                      546                  0   Infinity
+    4                    3.678                  0   4.312,00
+    5                   23.945                  0  14.128,50
+    6                  155.164                  0  10.190,06
+    7                  994.136                  0  11.109,03
+    8                6.360.375                  0  11.020,37
+    9               40.793.373                  0  12.186,41
+   10              261.785.029                  0  11.740,16
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     11.740.160 nps
+Node visits count:                         310.116.334 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       70                  0   Infinity
+    3                      434                  0   Infinity
+    4                    2.625                  0   3.138,00
+    5                   15.755                  0   9.446,50
+    6                   96.347                  0  11.524,00
+    7                  590.297                  0  11.199,00
+    8                3.660.496                  0  11.896,55
+    9               23.004.937                  0  11.968,07
+   10              146.116.662                  0  13.235,25
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     13.235.248 nps
+Node visits count:                         173.487.632 nodes
+
+bbbbb/bbbbb/bbbbb/bbbbb/5/5/wwwww/wwwww/wwwww/wwwww w 50 mo…
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                        9                  0   Infinity
+    2                       79                  0   Infinity
+    3                      537                  0   Infinity
+    4                    3.521                  0   Infinity
+    5                   21.861                  0  13.003,50
+    6                  138.238                  0  11.731,79
+    7                  851.164                  0  13.721,74
+    8                5.375.954                  0  13.455,50
+    9               33.546.715                  0  12.862,50
+   10              214.268.730                  0  13.607,77
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     13.607.773 nps
+Node visits count:                         254.206.808 nodes
+
+1bbb1/1b11b/1Www1/5/w2b1/1w1B1/2b2/5/bBb1w/W3w w 50
+------------------------------------------------------------
+depth                   leaves           endgames       kn/s
+    1                       17                  0   Infinity
+    2                       22                  0      39,00
+    3                      173                  0     212,00
+    4                    2.129                  0     780,33
+    5                   19.393                  0   2.414,89
+    6                  221.515                  0   3.378,46
+    7                2.033.826                  0   8.560,43
+    8               23.266.699                334  11.637,25
+    9              216.053.352              2.228  10.774,04
+   10            2.480.339.273             85.139  10.753,03
+
+Benchmark results
+------------------------------------------------------------
+Node visits per second:                     10.753.032 nps
+Node visits count:                       2.721.936.399 nodes
