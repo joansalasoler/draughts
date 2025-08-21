@@ -22,6 +22,7 @@ import com.joansala.engine.base.BaseBoard;
 import com.joansala.util.bits.BitsetConverter;
 import com.joansala.util.notation.CoordinateConverter;
 import com.joansala.util.notation.DiagramConverter;
+
 import static com.joansala.game.draughts.Draughts.*;
 import static com.joansala.game.draughts.DraughtsGame.*;
 
@@ -315,6 +316,16 @@ public class DraughtsBoard extends BaseBoard<long[]> {
         }
 
         return symbols;
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public long hash() {
+        Player player = (turn == SOUTH) ? Player.SOUTH : Player.NORTH;
+        return DraughtsGame.computeHash(player, position);
     }
 
 

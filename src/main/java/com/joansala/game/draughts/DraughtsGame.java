@@ -767,6 +767,18 @@ public class DraughtsGame extends BaseGame {
      */
     @Override
     protected long computeHash() {
+        return computeHash(player, state);
+    }
+
+
+    /**
+     * Computes hash code for the given position and player.
+     *
+     * @param state     Position array
+     * @param player    Player to move
+     * @return          Hash code for the position
+     */
+    protected static long computeHash(Player player, long[] state) {
         long hash = HASH_SIGN[player.man];
 
         for (int piece = 0; piece < PIECE_COUNT; piece++) {
