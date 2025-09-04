@@ -153,9 +153,6 @@ public final class Draughts {
     /** Never play book moves with a score lower than this */
     public static final int ROOT_THRESHOLD = -31;
 
-    /** Play book moves within this range of the best move score */
-    public static final int ROOT_DISTURBANCE = 22;
-
     // -------------------------------------------------------------------
     // Board definitions
     // -------------------------------------------------------------------

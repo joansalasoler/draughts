@@ -67,12 +67,6 @@ public class DraughtsModule extends BaseModule {
         private static String leaves = DraughtsLeaves.LEAVES_PATH;
 
         @Option(
-          names = "--roots-disturbance",
-          description = "Openings book root disturbance"
-        )
-        private static int disturbance = ROOT_DISTURBANCE;
-
-        @Option(
           names = "--roots-threshold",
           description = "Openings book root threshold"
         )
@@ -132,7 +126,6 @@ public class DraughtsModule extends BaseModule {
 
         try {
             DraughtsRoots roots = new DraughtsRoots(path);
-            roots.setDisturbance(DraughtsCommand.disturbance);
             roots.setThreshold(DraughtsCommand.threshold);
             return roots;
         } catch (Exception e) {

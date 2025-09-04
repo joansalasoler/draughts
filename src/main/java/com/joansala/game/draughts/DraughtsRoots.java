@@ -47,7 +47,6 @@ public class DraughtsRoots extends UCTRoots {
      */
     public DraughtsRoots(String path) throws IOException {
         super(path);
-        setDisturbance(ROOT_DISTURBANCE);
         setThreshold(ROOT_THRESHOLD);
         setInfinity(MAX_SCORE);
     }
